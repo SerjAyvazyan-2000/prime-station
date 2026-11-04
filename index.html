@@ -119,7 +119,7 @@
     <div class="container header__row">
       <a class="logo" href="#top">
         <!-- Логотип заказчика, обрезанный по полезной области; пропорции не менять -->
-        <img src="assets/images/logo.png" alt="Prime Station" height="40">
+        <img src="assets/images/logo2.png" alt="Prime Station" height="40">
       </a>
 
       <nav class="nav" id="site-nav" aria-label="Основное меню">
@@ -343,7 +343,7 @@
           <h2 id="works-title">Фотографии автомобилей в&nbsp;Prime Station</h2>
         </div>
 
-        <!-- Источники фото: assets/images/SOURCES.txt. Использование подтверждает компания. -->
+        <!-- Источники фото — в README.md. Использование подтверждает компания. -->
         <ul class="works">
           <li>
             <figure class="work">
@@ -488,7 +488,7 @@
           <div class="map" id="map">
             <div class="map__placeholder">
               <p class="map__addr">Иркутск, Академическая улица,&nbsp;27</p>
-              <p class="map__note">Карта Яндекса загрузится только после нажатия.</p>
+              <p class="map__note">Карта Яндекса загрузится только после нажатия. После загрузки Яндекс может использовать свои cookie — <a href="#cookies">подробнее</a>.</p>
               <a class="btn btn--ghost map__btn" href="https://yandex.ru/maps/org/prime_station/152141045912/?ll=104.302256%2C52.234407&amp;z=16" target="_blank" rel="noopener" data-map-src="https://yandex.ru/map-widget/v1/org/prime_station/152141045912/?ll=104.302256%2C52.234407&amp;z=16">Показать карту</a>
             </div>
           </div>
@@ -501,7 +501,7 @@
   <footer class="footer">
     <div class="container footer__grid">
       <div class="footer__brand">
-        <img src="assets/images/logo.png" alt="Prime Station" height="32" loading="lazy">
+        <img src="assets/images/logo2.png" alt="Prime Station" height="32" loading="lazy">
         <p>Детейлинг и&nbsp;автосвет в&nbsp;Иркутске</p>
       </div>
 
@@ -518,12 +518,26 @@
         <a href="https://vk.ru/prime_station" target="_blank" rel="noopener">ВКонтакте</a>
       </div>
 
+      <section class="cookies" id="cookies" aria-labelledby="cookies-title">
+        <h2 class="cookies__title" id="cookies-title">Использование cookie</h2>
+        <div class="cookies__text">
+          <p>Сайт Prime Station не&nbsp;устанавливает собственные cookie, не&nbsp;подключает счётчики посещений и&nbsp;не&nbsp;собирает персональные данные: на&nbsp;сайте нет форм, а&nbsp;звонок по&nbsp;номеру телефона совершается с&nbsp;вашего устройства.</p>
+          <p>Карта Яндекса в&nbsp;разделе «Контакты» загружается только после нажатия «Показать карту». С&nbsp;этого момента ООО «Яндекс» может устанавливать собственные cookie по&nbsp;своим правилам: <a href="https://yandex.ru/legal/cookies_policy/" target="_blank" rel="noopener">политика Яндекса</a>. Если не&nbsp;хотите загружать карту, используйте адрес и&nbsp;ссылку «Построить маршрут». Ссылки на&nbsp;ВКонтакте и&nbsp;2ГИС открывают эти сервисы, у&nbsp;которых свои правила обработки данных.</p>
+          <p>Чтобы не&nbsp;показывать уведомление повторно, сайт сохраняет в&nbsp;вашем браузере (localStorage) только отметку о&nbsp;том, что вы его закрыли. Эта отметка никуда не&nbsp;передаётся. Cookie и&nbsp;данные сайтов можно удалить или запретить в&nbsp;настройках браузера.</p>
+        </div>
+      </section>
+
       <div class="footer__bottom">
-        <p>© <span data-year>2026</span> Prime Station</p>
+        <p>© <span data-year>2026</span> Prime Station · <a href="#cookies">Cookie</a></p>
         <p>Сайт разработан в&nbsp;студии <a href="https://studio-psi-olive.vercel.app/" target="_blank" rel="noopener">Сайтика</a></p>
       </div>
     </div>
   </footer>
+
+  <div class="cookie-note" id="cookie-note" role="region" aria-label="Уведомление о cookie" hidden>
+    <p>Сайт не использует cookie. Карта Яндекса загружается только по&nbsp;нажатию и&nbsp;может использовать cookie Яндекса. <a href="#cookies">Подробнее</a></p>
+    <button class="btn btn--primary btn--sm" type="button" data-cookie-ok>Понятно</button>
+  </div>
 
   <a class="callbar" href="tel:+79140003880">
     <svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>
