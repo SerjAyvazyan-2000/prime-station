@@ -532,7 +532,7 @@ address { font-style: normal; }
    Первый экран: интерактив «полировка»
    ========================================================= */
 .polish { position: relative; border-radius: 12px; overflow: hidden; isolation: isolate; }
-.polish img { width: 100%; aspect-ratio: 656 / 340; object-fit: cover; border-radius: 12px; }
+.polish img { width: 100%; aspect-ratio: 1600 / 830; object-fit: cover; border-radius: 12px; }
 .polish__layer, .polish__tool, .polish__ui { display: none; }
 
 .polish.is-ready { cursor: none; touch-action: none; -webkit-user-select: none; user-select: none; }

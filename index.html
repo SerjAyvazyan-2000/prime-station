@@ -233,16 +233,20 @@
             </p>
           </div>
 
-          <figure class="hero__media">
+            <figure class="hero__media">
             <div class="hero__frame">
-              <!-- Интерактив «полировка»: царапины рисуются поверх фото в canvas (assets/js/polish.js).
-                 Без JS видно обычное чистое фото. -->
-              <div class="polish" data-polish>
+              <!-- Интерактив «полировка»: поверх фото «после» в canvas лежит фото «до», курсор стирает его -->
+              <div
+                class="polish"
+                data-polish
+                data-before="assets/images/hero-before.webp"
+                data-area="0.05,0.36,0.95,0.74"
+              >
                 <img
-                  src="assets/images/mers2.webp"
-                  width="656"
-                  height="340"
-                  alt="Передняя оптика и кузов автомобиля"
+                  src="assets/images/hero-after.webp"
+                  width="1600"
+                  height="830"
+                  alt="Автомобиль Mercedes-Benz, вид сбоку"
                   fetchpriority="high"
                   decoding="async"
                 />
@@ -250,71 +254,21 @@
                 <div class="polish__tool" aria-hidden="true">
                   <svg viewBox="0 0 120 120" width="120" height="120">
                     <g class="polish__body">
-                      <rect
-                        x="72"
-                        y="50"
-                        width="54"
-                        height="20"
-                        rx="10"
-                        fill="#1B232B"
-                        stroke="#50D1F5"
-                        stroke-width="1.5"
-                      />
-                      <rect
-                        x="104"
-                        y="54"
-                        width="14"
-                        height="12"
-                        rx="4"
-                        fill="#50D1F5"
-                      />
-                      <circle
-                        cx="60"
-                        cy="60"
-                        r="22"
-                        fill="#12171C"
-                        stroke="#28323C"
-                        stroke-width="2"
-                      />
+                      <rect x="72" y="50" width="54" height="20" rx="10" fill="#1B232B" stroke="#50D1F5" stroke-width="1.5" />
+                      <rect x="104" y="54" width="14" height="12" rx="4" fill="#50D1F5" />
+                      <circle cx="60" cy="60" r="22" fill="#12171C" stroke="#28323C" stroke-width="2" />
                     </g>
                     <g class="polish__pad">
-                      <circle
-                        cx="60"
-                        cy="60"
-                        r="40"
-                        fill="rgba(80,209,245,.16)"
-                        stroke="#50D1F5"
-                        stroke-width="2"
-                      />
-                      <circle
-                        cx="60"
-                        cy="60"
-                        r="30"
-                        fill="none"
-                        stroke="rgba(245,247,250,.35)"
-                        stroke-width="1.5"
-                        stroke-dasharray="6 5"
-                      />
-                      <circle
-                        cx="60"
-                        cy="60"
-                        r="18"
-                        fill="none"
-                        stroke="rgba(245,247,250,.25)"
-                        stroke-width="1.5"
-                        stroke-dasharray="3 4"
-                      />
+                      <circle cx="60" cy="60" r="40" fill="rgba(80,209,245,.16)" stroke="#50D1F5" stroke-width="2" />
+                      <circle cx="60" cy="60" r="30" fill="none" stroke="rgba(245,247,250,.35)" stroke-width="1.5" stroke-dasharray="6 5" />
+                      <circle cx="60" cy="60" r="18" fill="none" stroke="rgba(245,247,250,.25)" stroke-width="1.5" stroke-dasharray="3 4" />
                       <circle cx="60" cy="60" r="6" fill="#50D1F5" />
                     </g>
                   </svg>
                 </div>
                 <div class="polish__ui">
-                  <p class="polish__hint">
-                    Проведите курсором по фото — отполируйте царапины
-                  </p>
-                  <button class="polish__reset" type="button" hidden>
-                    Ещё раз
-                  </button>
+                  <p class="polish__hint">Проведите курсором по машине — отполируйте кузов</p>
+                  <button class="polish__reset" type="button" hidden>Ещё раз</button>
                 </div>
               </div>
             </div>
