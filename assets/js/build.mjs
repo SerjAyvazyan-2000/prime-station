@@ -27,9 +27,12 @@ function replaceBlock(html, name, content) {
 /* ---------- Прайс ---------- */
 const total = data.groups.reduce((s, g) => s + g.items.length, 0);
 
-const nav = `        <nav class="price-nav" aria-label="Группы прайса">
-${data.groups.map((g) => `          <a href="#${g.id}">${esc(g.title)}</a>`).join('\n')}
-        </nav>`;
+const tab = (id, title, active) =>
+  `            <button class="price-tab" type="button" role="tab" id="tab-${id}" data-tab="${id}" aria-controls="price-groups" aria-selected="${active}"${active ? '' : ' tabindex="-1"'}>${esc(title)}</button>`;
+const nav = `          <!-- Вкладки прайса: без JS скрыты, все группы видны сразу -->
+          <div class="price-nav price-tabs" role="tablist" aria-label="Группы прайса">
+${[tab('all', 'Все услуги', true), ...data.groups.map((g) => tab(g.id, g.title, false))].join('\n')}
+          </div>`;
 
 const groups = data.groups.map((g, i) => `          <section class="price-group" id="${g.id}" aria-labelledby="${g.id}-title">
             <h3 id="${g.id}-title"><span class="price-group__num" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>${esc(g.title)}</h3>
@@ -42,7 +45,7 @@ ${g.items.map(([name, price]) => `                <tr><td>${esc(name)}</td><td>$
           </section>`).join('\n');
 
 const prices = `${nav}
-        <div class="price-groups">
+        <div class="price-groups" id="price-groups" role="tabpanel" aria-labelledby="tab-all">
 ${groups}
         </div>`;
 

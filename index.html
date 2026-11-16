@@ -391,14 +391,16 @@
 
           <!-- Прайс собирается из assets/js/site-data.json командой: node assets/js/build.mjs -->
           <!-- build:prices -->
-          <nav class="price-nav" aria-label="Группы прайса">
-            <a href="#price-film">Защита плёнкой</a>
-            <a href="#price-light">Автосвет и ремонт фар</a>
-            <a href="#price-cleaning">Химчистка и детейлинг-мойка</a>
-            <a href="#price-polishing">Полировка и защитные покрытия</a>
-            <a href="#price-sound">Шумоизоляция</a>
-          </nav>
-          <div class="price-groups">
+          <!-- Вкладки прайса: без JS скрыты, все группы видны сразу -->
+          <div class="price-nav price-tabs" role="tablist" aria-label="Группы прайса">
+            <button class="price-tab" type="button" role="tab" id="tab-all" data-tab="all" aria-controls="price-groups" aria-selected="true">Все услуги</button>
+            <button class="price-tab" type="button" role="tab" id="tab-price-film" data-tab="price-film" aria-controls="price-groups" aria-selected="false" tabindex="-1">Защита плёнкой</button>
+            <button class="price-tab" type="button" role="tab" id="tab-price-light" data-tab="price-light" aria-controls="price-groups" aria-selected="false" tabindex="-1">Автосвет и ремонт фар</button>
+            <button class="price-tab" type="button" role="tab" id="tab-price-cleaning" data-tab="price-cleaning" aria-controls="price-groups" aria-selected="false" tabindex="-1">Химчистка и детейлинг-мойка</button>
+            <button class="price-tab" type="button" role="tab" id="tab-price-polishing" data-tab="price-polishing" aria-controls="price-groups" aria-selected="false" tabindex="-1">Полировка и защитные покрытия</button>
+            <button class="price-tab" type="button" role="tab" id="tab-price-sound" data-tab="price-sound" aria-controls="price-groups" aria-selected="false" tabindex="-1">Шумоизоляция</button>
+          </div>
+          <div class="price-groups" id="price-groups" role="tabpanel" aria-labelledby="tab-all">
             <section
               class="price-group"
               id="price-film"

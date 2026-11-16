@@ -86,6 +86,77 @@
     });
   }
 
+  /* ---------- Вкладки прайса ---------- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.price-tab'));
+  var panel = document.getElementById('price-groups');
+  if (tabs.length && panel) {
+    var groups = Array.prototype.slice.call(panel.querySelectorAll('.price-group'));
+    var switchTimer = 0;
+
+    var selectTab = function (id, focus) {
+      var found = false;
+      tabs.forEach(function (t) {
+        var on = t.getAttribute('data-tab') === id;
+        if (on) found = true;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        if (on && focus) t.focus();
+        // На телефоне прокручиваем строку вкладок к выбранной
+        if (on && t.parentNode.scrollWidth > t.parentNode.clientWidth) {
+          t.parentNode.scrollTo({ left: t.offsetLeft - t.parentNode.clientWidth / 2 + t.offsetWidth / 2, behavior: 'smooth' });
+        }
+      });
+      if (!found) return;
+      groups.forEach(function (g) {
+        var show = id === 'all' || g.id === id;
+        g.hidden = !show;
+        if (show) g.classList.add('is-visible');   // не ждать анимации появления при прокрутке
+      });
+      panel.classList.toggle('is-single', id !== 'all');
+      panel.setAttribute('aria-labelledby', 'tab-' + id);
+      // Короткая анимация смены вкладки
+      panel.classList.remove('is-switching');
+      void panel.offsetWidth;
+      panel.classList.add('is-switching');
+      clearTimeout(switchTimer);
+      switchTimer = setTimeout(function () { panel.classList.remove('is-switching'); }, 500);
+    };
+
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { selectTab(t.getAttribute('data-tab')); });
+      // Стрелки, Home и End переключают вкладки
+      t.addEventListener('keydown', function (e) {
+        var next = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = tabs[(i + 1) % tabs.length];
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = tabs[(i - 1 + tabs.length) % tabs.length];
+        else if (e.key === 'Home') next = tabs[0];
+        else if (e.key === 'End') next = tabs[tabs.length - 1];
+        if (!next) return;
+        e.preventDefault();
+        selectTab(next.getAttribute('data-tab'), true);
+      });
+    });
+
+    // Ссылки «К ценам» из карточек услуг (#price-film и т. д.) открывают нужную вкладку
+    var openFromHash = function (hash) {
+      var id = (hash || '').replace('#', '');
+      if (!id || !document.getElementById('tab-' + id) || id === 'all') return false;
+      selectTab(id);
+      var prices = document.getElementById('prices');
+      if (prices) prices.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      return true;
+    };
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#price-"]');
+      if (!a) return;
+      if (openFromHash(a.getAttribute('href'))) {
+        e.preventDefault();
+        if (history.replaceState) history.replaceState(null, '', '#prices');
+      }
+    });
+    if (location.hash.indexOf('#price-') === 0) openFromHash(location.hash);
+  }
+
   /* ---------- Плавное появление при прокрутке ---------- */
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var revealSelector = [
